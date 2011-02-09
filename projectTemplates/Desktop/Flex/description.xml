@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:projectTemplate xmlns:tns="http://fdt.powerflasher.com/ProjectTemplate"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://fdt.powerflasher.com/ProjectTemplate ../../projectTemplate.xsd">
+	<name>Flex AIR</name>
+	<version>2.0</version>
+	<projectType>${flexVersion}</projectType>
+	<variables>
+		<primaryGroup label="Options">
+			<group label="Project Setup">
+				<variable name="flexVersion" label="Flex Version" default="Flex 4 AIR"
+					type="enum('Flex 4 AIR','Flex 3 AIR')" />
+				<variable name="appDesc"
+					label="Include Adobe AIR Application Descriptor File" default="true"
+					type="boolean" />
+				<group label="Configure..." style="popupButton" enableIf="${appDesc}">
+					<group label="Edit Adobe AIR Application Descriptor File">
+						<variable name="appDescTitle" label="Title" default="My AIR App"
+							type="string" />
+						<variable name="appDescSysChrome" label="System Chrome"
+							default="standard" type="enum('standard','none')" />
+						<variable name="appDescTrans" label="Transparent"
+							default="false" type="boolean" />
+						<variable name="appDescVisible" label="Visible" default="true"
+							type="boolean" />
+						<variable name="appDescMin" label="Minimizable" default="true"
+							type="boolean" />
+						<variable name="appDescMax" label="Maximizable" default="true"
+							type="boolean" />
+						<variable name="appDescResize" label="Resizable" default="true"
+							type="boolean" />
+						<variable name="appDescWidth" label="Width" default="550"
+							type="int" />
+						<variable name="appDescHeight" label="Height" default="400"
+							type="int" />
+						<variable name="appDescX" label="X" default="150" type="int" />
+						<variable name="appDescY" label="Y" default="150" type="int" />
+						<group label="Minimum Size">
+							<variable name="appDescMinWidth" label="Width" default="300"
+								type="int" />
+							<variable name="appDescMinHeight" label="Height"
+								default="400" type="int" />
+						</group>
+						<group label="Maximum Size">
+							<variable name="appDescMaxWidth" label="Width" default="800"
+								type="int" />
+							<variable name="appDescMaxHeight" label="Height"
+								default="800" type="int" />
+						</group>
+					</group>
+				</group>
+			</group>
+			<group label="Unit Testing">
+				<variable name="addUnitTesting" label="Add Unit Testing"
+					default="false" type="boolean" />
+				<group label="More..." style="popupButton" enableIf="${addUnitTesting}">
+					<variable name="testFolderName" label="Test Folder Name"
+						default="test-src" type="string" />
+					<variable name="addExample" label="Add Example" default="true"
+						type="boolean" />
+					<variable name="addJar" label="Include flexUnitTasks.jar"
+						default="false" type="boolean" />
+				</group>
+			</group>
+		</primaryGroup>
+	</variables>
+	<description>This template will create a Flex project named '${projectName}' and include all necessary libraries for a ${flexVersion} application targeting the Adobe Integrated Runtime (AIR).</description>
+	<expressions>
+		<expression name="isFlex3" value="${flexVersion} == 'Flex 3 AIR'" />
+		<expression name="isFlex4" value="${flexVersion} == 'Flex 4 AIR'" />
+		<expression name="sourceFolder" value="src" />
+		<expression name="outputFolder" value="bin" />
+	</expressions>
+	<folders>
+		<sourceFolder>${sourceFolder}</sourceFolder>
+		<outputFolder>${outputFolder}</outputFolder>
+		
+		<!-- if unit testing -->
+		<sourceFolder if="${addUnitTesting}">${testFolderName}</sourceFolder>
+		<autoLibFolder>libs</autoLibFolder>
+	</folders>
+	<contentCreation processFileExtensions="as,mxml,xml,launch,html">
+		
+		<!-- Application Descriptor File -->
+		<file src="xml/app.xml" dest="${outputFolder}/Main-app.xml"
+			process="true" if="${appDesc}" />
+		
+		<!-- Flex Version -->
+		<file src="mxml/Halo.mxml" dest="src/Main.mxml" if="${isFlex3}" />
+		<file src="mxml/Spark.mxml" dest="src/Main.mxml" if="${isFlex4}" />
+				
+		<!-- If Unit Testing -->
+		<file src="mxml/HaloRunner.mxml" dest="${testFolderName}/Test${projectName}.mxml"
+			if="(${addUnitTesting} &amp;&amp; ${addExample}) &amp;&amp; (${flexVersion} == 'Flex 3 AIR')" />
+		<file src="mxml/SparkRunner.mxml" dest="${testFolderName}/Test${projectName}.mxml"
+			if="(${addUnitTesting} &amp;&amp; ${addExample}) &amp;&amp; (${flexVersion} == 'Flex 4 AIR')" />
+		<file src="as/SimpleTest.as" dest="${testFolderName}/tests/SimpleTest.as"
+			if="(${addUnitTesting} &amp;&amp; ${addExample})" />
+		<file src="unitTesting/flexUnitTasks-4.0.0.jar" dest="script/flexUnitTasks-4.0.0.jar"
+			if="(${addUnitTesting} &amp;&amp; ${addExample}) &amp;&amp;${addJar}" />
+		<folder src="unitTesting/swc" dest="libs" recursive="true"
+			if="${addUnitTesting}" />
+		<folder src="${testFolderName}" recursive="true" if="${addUnitTesting}" />
+	</contentCreation>
+</tns:projectTemplate>

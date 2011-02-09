@@ -1,0 +1,1 @@
+﻿package {	import flash.display.Sprite;	public class ${projectName} extends Sprite	{		public function ${projectName}()		{			// begin project		}	}}

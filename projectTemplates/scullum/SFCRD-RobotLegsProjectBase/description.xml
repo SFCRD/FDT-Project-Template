@@ -2,7 +2,7 @@
 <tns:projectTemplate xmlns:tns="http://fdt.powerflasher.com/ProjectTemplate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://fdt.powerflasher.com/ProjectTemplate ../../projectTemplate.xsd">
   <name>SFCRD FDT Project Base</name>
   <description>A project base that needs a proper description.</description>
-  <version>1.0</version>
+  <version>1.1</version>
   <projectType>AS 3</projectType>
   <variables>
     <primaryGroup label="Options">
@@ -31,10 +31,13 @@
   </expressions>
   <folders>
     <sourceFolder>src</sourceFolder>
-    <sourceFolder>lib/src</sourceFolder>
-    <autoLibFolder>lib/bin</autoLibFolder>
+    <autoLibFolder if="${greensock}">libs/bin/greensock</autoLibFolder>
+    <autoLibFolder if="${robotlegs}">libs/bin/robotlegs</autoLibFolder>
+    <autoLibFolder if="${signals}">libs/bin/signals</autoLibFolder>
     <outputFolder>deploy</outputFolder>
   </folders>
+  
+  
   <contentCreation processFileExtensions="as,html,launch">
     <!-- If HTML Wrapper -->
     <folder src="html" dest="${outputFolder}" process="true" recursive="true" if="${htmlTemplate}"/>
@@ -45,9 +48,9 @@
     <file src="launch/app.launch" dest=".settings/launch/${projectName}.launch" process="true"/>
     
     <!-- SWCs -->
-    <folder src="swc/greensock" dest="libs/bin/" recursive="true" if="${greensock}"/>
-    <folder src="swc/robotlegs" dest="libs/bin/" recursive="true" if="${robotlegs}"/>
-    <folder src="swc/signals" dest="libs/bin/" recursive="true" if="${signals}"/>
+    <folder src="swc/greensock" dest="libs/bin/greensock" recursive="true" if="${greensock}"/>
+    <folder src="swc/robotlegs" dest="libs/bin/robotlegs" recursive="true" if="${robotlegs}"/>
+    <folder src="swc/signals" dest="libs/bin/signals" recursive="true" if="${signals}"/>
 
     <!-- If Unit Testing -->
     <file src="unitTesting/flexUnitTasks-4.0.0.jar" dest="script/flexUnitTasks-4.0.0.jar" if="${addJar} &amp;&amp; ${addUnitTesting}"/>

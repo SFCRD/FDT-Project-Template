@@ -46,7 +46,7 @@
     <!-- If HTML Wrapper -->
     <folder src="html" dest="${outputFolder}" process="true" recursive="true" if="${htmlTemplate}"/>
     <!-- Create Main Document Class -->
-    <file src="as/Main.as" dest="src/Main.as" process="true" />
+    <file src="as/Main.as" dest="src/${projectName}Main.as" process="true" />
       
     <!-- Create launch file -->
     <file src="launch/app.launch" dest=".settings/launch/${projectName}.launch" process="true"/>

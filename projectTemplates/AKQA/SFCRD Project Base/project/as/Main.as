@@ -3,9 +3,9 @@ package {
   
   [SWF(width='760', height='600', backgroundColor='#FFFFFF', frameRate='31')]
   
-  public class Main extends ${extends}
+  public class ${projectName}Main extends ${extends}
   {
-    public function Main() 
+    public function ${projectName}Main() 
     {
     }
   }

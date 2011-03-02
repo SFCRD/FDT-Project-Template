@@ -1,0 +1,11 @@
+# FDT Project Template for AKQA SFCRD
+An evolving project template for FDT. Allows user to select dependent libraries, html wrapper, or extend options.
+
+## Installation and Dependencies
+
+## Included Libraries and Options
+* Greensock
+* Signals 
+* RobotLegs
+* AS3 Operations
+* AS3 Router

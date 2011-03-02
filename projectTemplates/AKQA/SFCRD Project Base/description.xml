@@ -47,6 +47,8 @@
     <folder src="html" dest="${outputFolder}" process="true" recursive="true" if="${htmlTemplate}"/>
     <!-- Create Main Document Class -->
     <file src="as/Main.as" dest="src/${projectName}Main.as" process="true" />
+		<file src="as/RobotLegs/RobotLegsMain.as" dest="src/${projectName}Main.as" process="true" if="${robotlegs}"/>
+		<file src="as/RobotLegs/RobotLegsContext.as" dest="src/${projectName}Context.as" process="true" if="${robotlegs}" />
       
     <!-- Create launch file -->
     <file src="launch/app.launch" dest=".settings/launch/${projectName}.launch" process="true"/>

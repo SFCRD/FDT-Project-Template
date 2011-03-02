@@ -1,5 +1,5 @@
 # FDT Project Template for AKQA SFCRD
-An evolving project template for FDT. Allows user to select dependent libraries, html wrapper, or extend options. I'll write a better description once this takes a bit more shape.
+An evolving project template for [FDT](http://www.fdt.powerflasher.com/). Allows user to select dependent libraries, html wrapper, or extend options. I'll write a better description once this takes a bit more shape.
 
 ## Installation and Dependencies
 This (and any future) project templates relies on the features of FDT 4.2, in particular the Automatic Library Folder and update Configurable Project Templates.
@@ -11,6 +11,8 @@ The contents of this repository should be copied to FDT's application support fo
 	
 	PC:
 	C:\Users\{Username}\AppData\Roaming\FDT
+	
+[More on FDT Project Templates](http://fdt.powerflasher.com/docs/Project_Templates)
 
 ## Included Libraries and Options
 * [Greensock](http://www.greensock.com) 

@@ -1,11 +1,20 @@
 # FDT Project Template for AKQA SFCRD
-An evolving project template for FDT. Allows user to select dependent libraries, html wrapper, or extend options.
+An evolving project template for FDT. Allows user to select dependent libraries, html wrapper, or extend options. I'll write a better description once this takes a bit more shape.
 
 ## Installation and Dependencies
+This (and any future) project templates relies on the features of FDT 4.2, in particular the Automatic Library Folder and update Configurable Project Templates.
+
+The contents of this repository should be copied to FDT's application support folders:
+
+	MAC:
+	/Users/{Username}/Library/Application Support/FDT
+	
+	PC:
+	C:\Users\{Username}\AppData\Roaming\FDT
 
 ## Included Libraries and Options
-* Greensock
-* Signals 
-* RobotLegs
-* AS3 Operations
-* AS3 Router
+* [Greensock](http://www.greensock.com) 
+* [Signals](https://github.com/robertpenner/as3-signals) 
+* [RobotLegs](http://www.robotlegs.org/)
+* [AS3 Operations](https://github.com/jeremyruppel/as3-operations)
+*	[AS3 Router](https://github.com/SFCRD/as3-router)

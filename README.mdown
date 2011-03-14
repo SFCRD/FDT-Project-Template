@@ -16,7 +16,7 @@ The contents of this repository should be copied to FDT's application support fo
 
 ## Included Libraries and Options
 * [Greensock](http://www.greensock.com) 
-* [Signals](https://github.com/robertpenner/as3-signals) 
+* [Signals](https://github.com/robertpenner/as3-signals) includes reference to [SignalCommandMap](https://github.com/joelhooks/signals-extensions-CommandSignal) and [SignalMediator](https://github.com/SFCRD/robotlegs-utilities-SignalMediator)
 * [RobotLegs](http://www.robotlegs.org/)
 * [AS3 Operations](https://github.com/jeremyruppel/as3-operations)
 *	[AS3 Router](https://github.com/SFCRD/as3-router)
